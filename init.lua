@@ -192,8 +192,13 @@ langs = {
 
 core.register_chatcommand("langs",{
   description = "View langs table",
+  param = "search pattern",
   func = function(name, param)
-	for k,v in pairs(langs) do
-		core.chat_send_player(name, k.." = "..v)
-	end
+        if not param or param == "" then return end
+        for k,v in pairs(langs) do
+                local str = k.." = "..v
+                if str:match(param) then
+                        core.chat_send_player(name, str)
+                end
+        end
 end})
