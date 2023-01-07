@@ -187,6 +187,7 @@ langs = {
 ["zh"] = "Chinese",
 ["zh_CN"] = "Chinese Simplified",
 ["zh_TD"] = "Chinese Traditional",
+["zh_TW"] = "Chinese Taiwan",
 ["zu"] = "Zulu"
 }
 
@@ -194,11 +195,11 @@ core.register_chatcommand("langs",{
   description = "View langs table",
   param = "search pattern",
   func = function(name, param)
-        if not param or param == "" then return end
-        for k,v in pairs(langs) do
-                local str = k.." = "..v
-                if str:match(param) then
-                        core.chat_send_player(name, str)
-                end
-        end
+	if not param or param == "" then return end
+	for k,v in pairs(langs) do
+		local str = k.." = "..v
+		if str:match(param) then
+			core.chat_send_player(name, str)
+		end
+	end
 end})
